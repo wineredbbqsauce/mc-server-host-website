@@ -83,7 +83,7 @@ def readOutput(name: str, process):
 # Api-endepunkter
 # --
 
-@app.rite("/")
+@app.route("/")
 def index():
     return app.send_static_file("index.html")
 
@@ -198,7 +198,7 @@ def get_logs(name: str):
     logs = entry["logs"] if entry else []
     return jsonify({"logs": logs})
 
-@approute("/api/servers/<name>/command", methods=["POST"])
+@app.route("/api/servers/<name>/command", methods=["POST"])
 def send_command(name: str):
     """Send en kommando til serverens stdin (f.eks. 'say Hello')"""
     if not is_running(name):
